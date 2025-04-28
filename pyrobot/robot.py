@@ -11,9 +11,11 @@ from typing import List
 from typing import Dict
 from typing import Union
 
+
 class PyRobot():
 
-    def __init__(self, client_id: str, redirect_uri: str, credentials_path: str = None, trading_account: str = None) -> None:
+    def __init__(self, client_id: str, redirect_uri: str, credentials_path: str = None,
+                 trading_account: str = None) -> None:
 
         self.trading_account: str = trading_account
         self.client_id: str = client_id
@@ -31,7 +33,7 @@ class PyRobot():
             redirect_uri=self.redirect_uri,
             credentials_path=self.credentials_path
         )
-                     # Login to the session.
+        # Login to the session.
         td_client.login()
 
         return td_client
@@ -49,10 +51,6 @@ class PyRobot():
         else:
             return False
 
-
-
-
-
     @property
     def post_market_open(self) -> bool:
         post_market_start_time = datetime.now().replace(hour=22, minute=30, second=00, tzinfo=timezone.utc).timestamp()
@@ -64,7 +62,6 @@ class PyRobot():
 
         else:
             return False
-
 
     @property
     def regular_market_open(self) -> bool:
@@ -78,7 +75,6 @@ class PyRobot():
 
         else:
             return False
-
 
     def create_portfolio(self):
         pass
